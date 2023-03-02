@@ -1,7 +1,7 @@
 {
-  "name": "marked-extension-template",
-  "version": "0.0.0",
-  "description": "marked extension template",
+  "name": "marked-mermaid",
+  "version": "0.1.0",
+  "description": "Marked.js extensions to render Mermaid.js",
   "main": "./lib/index.cjs",
   "module": "./src/index.js",
   "browser": "./lib/index.umd.js",
@@ -24,18 +24,19 @@
     "test": "jest --verbose",
     "test:cover": "jest --coverage",
     "lint": "eslint .",
-    "build": "rollup -c rollup.config.js"
+    "build": "rollup -c rollup.config.js",
+    "dev": "rollup -c rollup.config.js --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markedjs/marked-extension-template.git"
+    "url": "git+https://github.com/MichielDeMey/marked-mermaid.git"
   },
-  "author": "Tony Brix <Tony@Brix.ninja> (https://Tony.Brix.ninja)",
+  "author": "Michiel De Mey <michiel@spaceowl.be> (https://spaceowl.be)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/markedjs/marked-extension-template/issues"
+    "url": "https://github.com/MichielDeMey/marked-mermaid/issues"
   },
-  "homepage": "https://github.com/markedjs/marked-extension-template#readme",
+  "homepage": "https://github.com/MichielDeMey/marked-mermaid#readme",
   "peerDependencies": {
     "marked": "^4.2.12"
   },
@@ -58,5 +59,9 @@
     "marked": "^4.2.12",
     "rollup": "^3.17.3",
     "semantic-release": "^20.1.0"
+  },
+  "dependencies": {
+    "lodash.memoize": "^4.1.2",
+    "mermaid": "^9.4.0"
   }
 }
