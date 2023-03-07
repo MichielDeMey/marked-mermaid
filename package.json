@@ -62,6 +62,6 @@
   },
   "dependencies": {
     "lodash.memoize": "^4.1.2",
-    "mermaid": "^9.4.0"
+    "mermaid": "^10.0.2"
   }
 }
