@@ -2,7 +2,9 @@ const memoize = require('lodash.memoize');
 const Mermaid = require('mermaid');
 
 const defaultOptions = {
-  mermaid: {}
+  mermaid: {},
+  container: undefined,
+  callback: undefined
 };
 const isBrowser = global.document !== undefined && global.window !== undefined;
 
@@ -21,9 +23,12 @@ export default function markedMermaid(options = {}) {
   }
 
   // We memoize mermaid.render here to optimize performance
-  const renderMermaid = memoize((code) => {
+  const renderMermaid = memoize((code, container = undefined, callback = undefined) => {
+    const id = Math.floor(Math.random() * 100);
     try {
-      return Mermaid.render('mermaid', code);
+      return `<pre id="mermaid-${id}" class="mermaid" data-processed="true">
+      ${Mermaid.render(`mermaid-${id}`, code, callback ?? (() => { }), container)}
+      </pre>`;
     } catch (ex) {
       return `<pre><code>${ex}</code></pre>`;
     }
@@ -53,7 +58,7 @@ export default function markedMermaid(options = {}) {
         }
 
         return isBrowser
-          ? renderMermaid(text)
+          ? renderMermaid(text, options.container, options.callback)
           : htmlContent;
       }
     }]
